@@ -1,0 +1,27 @@
+{
+  "extends": ["config:recommended"],
+  
+  "customManagers": [
+    {
+      "fileMatch": ["\\.tf$"],
+      "matchStrings": [
+        // Match a line like:
+        // eks_version = "1-33"
+        "eks_version\\s+=\\s+\"(?<currentValue>[^\"]+)\"",
+      ],
+      // remove `v` prefix from the version
+      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "datasourceTemplate": "github-releases",
+    },
+  ],
+
+  "packageRules": [
+    {
+      "matchDatasources": ["github-releases"],
+      "matchUpdateTypes": ["minor"],
+      "matchPackageNames": ["aws/eks-distro"],
+      // v1-33
+      "versioning": "regex:^v?(?<major>\\d+)[-.](?<minor>\\d+)"
+    }
+  ]
+}
