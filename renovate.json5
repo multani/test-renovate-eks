@@ -22,7 +22,7 @@
       "matchDatasources": ["github-releases"],
       "matchPackageNames": ["aws/eks-distro"],
       // v1-33-eks-10
-      "versioning": "regex:^v?(?<major>\\d+)-(?<minor>\\d+)-eks-(?<build>\\d+)$"
+      "versioning": "regex:^v?(?<major>\\d+)-(?<minor>\\d+)-eks-(?<patch>\\d+)$"
     }
   ]
 }
