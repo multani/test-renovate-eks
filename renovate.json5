@@ -4,7 +4,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["\\.tf$"],
+      "fileMatch": ["*.tf"],
       "matchStrings": [
         // Match a line like:
         // eks_version = "1-33"
