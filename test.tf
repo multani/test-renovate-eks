@@ -5,8 +5,8 @@ resource "aws_eks_cluster" "example" {
     authentication_mode = "API"
   }
 
-  role_arn = aws_iam_role.cluster.arn
-  version  = "1.31"
+  role_arn    = aws_iam_role.cluster.arn
+  eks_version = "1.31"
 
   vpc_config {
     subnet_ids = [
