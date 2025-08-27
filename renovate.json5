@@ -12,7 +12,7 @@
       ],
       "depNameTemplate": "aws/eks-distro",
       // remove `v` prefix from the version
-      "extractVersionTemplate": "^v?(?<version>.*)$",
+      "extractVersionTemplate": "^v?(?<version>.+)$",
       "datasourceTemplate": "github-releases",
     },
   ],
@@ -21,8 +21,8 @@
     {
       "matchDatasources": ["github-releases"],
       "matchPackageNames": ["aws/eks-distro"],
-      // v1-33
-      "versioning": "regex:^v?(?<major>\\d+)[-.](?<minor>\\d+)"
+      // v1-33-eks-10
+      "versioning": "regex:^v?(?<major>\\d+)-(?<minor>\\d+)-eks-(?<build>\\d+)$"
     }
   ]
 }
