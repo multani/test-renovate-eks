@@ -16,21 +16,13 @@
     },
   ],
 
-  //"packageRules": [
-  //  {
-  //    "matchDatasources": ["custom.eks-distros"],
-  //    "matchPackageNames": ["aws/eks-distro"],
-  //    "versioning": "regex:^v?(?<major>\\d+).(?<minor>\\d+)$"
-  //  }
-  //],
-
   "customDatasources": {
     "eks-distros": {
       "defaultRegistryUrlTemplate": "https://api.github.com/repos/aws/eks-distro/releases",
       "format": "json",
       "transformTemplates": [
         //"{\"releases\": [ $[].{\"version\": name, \"releaseTimestamp\": created_at} ]}",
-        "$[] { \"releases\": $map($, function($v) { { \"version\": $distinct( $join( $filter( $split( $replace($v.tag_name, /^v(.+)$/, \"$1\"), \"-\"), /* Pick only the first 2 items of the release numbers */ function($vv, $i) { $i < 2 }), \".\")), \"releaseTimestamp\": $v.published_at } }) } ",
+        "$[] { \"releases\": $map($, function($v) { { \"version\": $join( $filter( $split( $replace($v.tag_name, /^v(.+)$/, \"$1\"), \"-\"), /* Pick only the first 2 items of the release numbers */ function($vv, $i) { $i < 2 }), \".\"), \"releaseTimestamp\": $v.published_at } }) } ",
       ],
     }
   },
