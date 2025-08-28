@@ -13,7 +13,7 @@
       "depNameTemplate": "aws/eks-distro",
       // remove `v` prefix from the version
       "extractVersionTemplate": "^v?(?<version>.+)$",
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "eks-distros",
     },
   ],
 
