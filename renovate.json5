@@ -14,6 +14,7 @@
       // remove `v` prefix from the version
       "extractVersionTemplate": "^v?(?<version>.+)$",
       "datasourceTemplate": "custom.eks-distros",
+      "versioningTemplate": "semver-coerced",
     },
   ],
 
