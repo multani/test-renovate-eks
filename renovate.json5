@@ -10,7 +10,7 @@
         // eks_version = "1.33"
         "eks_version\\s+=\\s+\"(?<currentValue>[^\"]+)\"",
       ],
-      "depNameTemplate": "aws/eks-distro",
+      "depNameTemplate": "aws/eks",
       "datasourceTemplate": "custom.eks-distros",
       "versioningTemplate": "semver-coerced",
     },
