@@ -13,13 +13,13 @@
       "depNameTemplate": "aws/eks-distro",
       // remove `v` prefix from the version
       "extractVersionTemplate": "^v?(?<version>.+)$",
-      "datasourceTemplate": "eks-distros",
+      "datasourceTemplate": "custom.eks-distros",
     },
   ],
 
   "packageRules": [
     {
-      "matchDatasources": ["eks-distros"],
+      "matchDatasources": ["custom.eks-distros"],
       "matchPackageNames": ["aws/eks-distro"],
       "versioning": "regex:^v?(?<major>\\d+).(?<minor>\\d+)$"
     }
