@@ -7,12 +7,10 @@
       "managerFilePatterns": ["*.tf"],
       "matchStrings": [
         // Match a line like:
-        // eks_version = "1-33"
+        // eks_version = "1.33"
         "eks_version\\s+=\\s+\"(?<currentValue>[^\"]+)\"",
       ],
       "depNameTemplate": "aws/eks-distro",
-      // remove `v` prefix from the version
-      "extractVersionTemplate": "^v?(?<version>.+)$",
       "datasourceTemplate": "custom.eks-distros",
       "versioningTemplate": "semver-coerced",
     },
