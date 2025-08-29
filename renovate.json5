@@ -34,7 +34,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["aws/eks"],
-      "additionalBranchPrefix": "{{parentDir}}-",
+      "additionalBranchPrefix": "{{baseDir}}-{{parentDir}}-",
     }
   ],
 
