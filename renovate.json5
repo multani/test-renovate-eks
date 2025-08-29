@@ -35,6 +35,7 @@
     {
       "matchPackageNames": ["aws/eks"],
       "additionalBranchPrefix": "{{baseDir}}-{{parentDir}}-",
+      "commitMessageSuffix": " (`{{baseDir}}-{{parentDir}}`)",
     }
   ],
 
