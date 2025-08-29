@@ -30,4 +30,11 @@
       ],
     }
   },
+
+  "packageRules": [
+    {
+      "matchPackageNames": ["aws/eks"],
+      "additionalBranchPrefix": "{{parentDir}}-",
+    }
+  ]
 }
