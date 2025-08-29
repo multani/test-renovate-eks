@@ -38,10 +38,10 @@
     }
   ],
 
-  "hostRules": [
-    {
-      "matchHost": "api.github.com",
-      "token": "{{ secrets.GITHUB_TOKEN }}",
-    },
-  ],
+  //"hostRules": [
+  //  {
+  //    "matchHost": "api.github.com",
+  //    "token": "{{ secrets.GITHUB_TOKEN }}",
+  //  },
+  //],
 }
