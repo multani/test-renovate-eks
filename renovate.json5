@@ -1,0 +1,62 @@
+{
+  "extends": ["config:recommended"],
+  
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "*.tf",
+        "**/*.tf",
+      ],
+      "matchStrings": [
+        // Match a line like:
+        // eks_version = "1.33"
+        "eks_version\\s+=\\s+\"(?<currentValue>[^\"]+)\"",
+      ],
+      "depNameTemplate": "aws/eks",
+      "datasourceTemplate": "custom.eks-distros",
+      "versioningTemplate": "semver-coerced",
+    },
+  ],
+
+  "customDatasources": {
+    "eks-distros": {
+      // Fetching this URL sometimes fails and gives a 403 to Renovate.
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/aws/eks-distro/releases",
+      "format": "json",
+      "transformTemplates": [
+        '\
+        $[] { \
+          "releases": $map( \
+            $, \
+            function($v) { \
+              { \
+                "version": $join( \
+                  $filter( \
+                    $split( \
+                      $replace($v.tag_name, /^v(.+)$/, "$1"), \
+                      "-" \
+                    ), \
+                    /* Pick only the first 2 items of the release numbers */ \
+                    function($vv, $i) { $i < 2 } \
+                  ), \
+                  "." \
+                ), \
+                "releaseTimestamp": $v.published_at \
+              } \
+            } \
+          ) \
+        } \
+        ',
+      ],
+    }
+  },
+
+  "packageRules": [
+    {
+      "matchPackageNames": ["aws/eks"],
+      "additionalBranchPrefix": "{{packageFileDir}}-",
+      "commitMessageSuffix": " (`{{packageFileDir}}`)",
+    }
+  ],
+}
