@@ -1,5 +1,7 @@
 {
   "extends": ["config:recommended"],
+
+  "prHourlyLimit": 100,
   
   "customManagers": [
     {
